@@ -1,0 +1,21 @@
+:root {
+  --brand: #e07b39;
+  --brand-dark: #c4642a;
+  --brand-light: #fdf3ec;
+  --navy: #1a3c5e;
+  --navy-light: #2c5f8a;
+  --bg: #f5f7fa;
+  --surface: #ffffff;
+  --surface2: #f0f4f8;
+  --text: #1a1f2e;
+  --text-muted: #6b7794;
+  --border: #e2e8f0;
+  --green: #22c55e;
+  --yellow: #f59e0b;
+  --red: #ef4444;
+  --blue: #3b82f6;
+  --purple: #8b5cf6;
+  --radius: 14px;
+  --shadow: 0 4px 24px rgba(26,60,94,.08);
+  --shadow-lg: 0 8px 40px rgba(26,60,94,.14);
+}
