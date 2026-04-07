@@ -15,7 +15,7 @@
 <div class="login-left">
     <div class="login-logo">
         <div class="login-logo-circle">
-            <img src="image/LOGO.png" alt="Logo" radius="100%">
+            <img src="images/logo.png" alt="Logo" radius="100%">
         </div>
         <p class="login-brand">Restaurante Milagros</p>
     </div>
@@ -38,6 +38,7 @@
     </div>
 </div>
 <!-- ===== DASHBOARD ===== -->
+<!-- topbar mobile-->
 <div class="topbar">
     <div class="title-business">
       <i class="fa-solid fa-utensils" style="color:#c0392b;margin-right:8px"></i>
@@ -47,6 +48,45 @@
       <i class="fa-solid fa-bars"></i>
     </button>
 </div>
-
+<!--overlay-->
+<div class="overlay" id="overlay"></div>
+<!--sidebar-->
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+        <i class="fa-solid fa-utensils"></i>
+        <span>Milagros</span>
+    </div>
+<ul>
+<li>
+    <a href="#" class="nav-link activo" data-section="inicio">
+        <i class="fa-solid fa-house"></i><span>Inicio</span>
+    </a>
+</li>
+<li>
+    <a href="#" class="nav-link" data-section="pedidos">
+        <i class="fa-solid fa-clipboard-list"></i><span>Pedidos</span>
+    </a>
+</li>
+<li>
+    <a href="#" class="nav-link" data-section="cocina">
+        <i class="fa-solid fa-kitchen-set"></i><span>Cocina</span>
+    </a>
+</li>
+<li>
+    <a href="#" class="nav-link" data-section="asistencia">
+        <i class="fa-solid fa-user-check"></i><span>Asistencia</span>
+    </a>
+</li>
+<li>
+    <a href="#" class="nav-link" data-section="menu">
+        <i class="fa-solid fa-pen-to-square"></i><span>Menú</span>
+    </a>
+</li>
+</ul>
+</div class="sidebar-footer">
+    <a href="#" id="btnLogout" class="nav-link">
+       <i class="fa-solid fa-right-from-bracket"></i><span>Cerrar sesión</span>
+    </a>
+</div>
 </body>
 </html>
