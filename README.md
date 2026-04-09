@@ -120,5 +120,65 @@ Un pedido puede tener varios platos, pero cada detalle pertenece a un pedido.
 ### PLATO -- DETALLE_PEDIDO (1:N)
 Un plato puede estar en muchos pedidos, pero cada detalle tiene un solo plato
 
+## BASE DE DATOS 
+
+CREATE DATABASE IF NOT EXISTS restaurante_db;
+USE restaurante_db;
+
+CREATE TABLE usuario (
+Id_Usuario INT AUTO_INCREMENT PRIMARY KEY,
+nombre VARCHAR(100) NOT NULL,
+rol VARCHAR(20) NOT NULL,
+contraseña VARCHAR(100) NOT NULL,
+CONSTRAINT chk_rol CHECK(rol IN('administrador','mozo','cocina'))
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish_ci;
+
+CREATE TABLE asistencia (
+Id_Asistencia INT AUTO_INCREMENT PRIMARY KEY,
+fecha DATE NOT NULL,
+hora_entrada TIME NOT NULL,
+hora_salida TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+estado VARCHAR(20) NOT NULL,
+Id_Usuario INT NOT NULL,
+FOREIGN KEY (Id_Usuario) REFERENCES usuario(Id_Usuario),
+CONSTRAINT chk_estado_asistencia CHECK(estado IN('asistio','tarde','falta'))
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish_ci;
+
+CREATE TABLE plato (
+Id_Plato INT AUTO_INCREMENT PRIMARY KEY,
+nombre VARCHAR(100) NOT NULL,
+precio DECIMAL(10,2) NOT NULL,
+disponibilidad BOOLEAN NOT NULL DEFAULT TRUE,
+CONSTRAINT chk_precio CHECK(precio > 0)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish_ci;
+
+CREATE TABLE pedido (
+Id_Pedido INT AUTO_INCREMENT PRIMARY KEY,
+mesa INT NOT NULL,
+fecha DATE NOT NULL,
+hora_pedido TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+estado_pedido VARCHAR(20) NOT NULL,
+Id_Usuario INT NOT NULL,
+FOREIGN KEY (Id_Usuario) REFERENCES usuario(Id_Usuario),
+CONSTRAINT chk_estado_pedido CHECK(estado_pedido IN('pendiente','en preparación','servido','entregado'))
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish_ci;
+
+CREATE TABLE detalle_pedido (
+Id_Detalle INT AUTO_INCREMENT PRIMARY KEY,
+cantidad INT NOT NULL,
+estado_plato VARCHAR(20) NOT NULL,
+Id_Pedido INT NOT NULL,
+Id_Plato INT NOT NULL,
+FOREIGN KEY (Id_Pedido) REFERENCES pedido(Id_Pedido),
+FOREIGN KEY (Id_Plato) REFERENCES plato(Id_Plato),
+CONSTRAINT chk_cantidad CHECK (cantidad > 0),
+CONSTRAINT chk_estado_plato CHECK(estado_plato IN('falta servir','servido'))
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish_ci;
+
+INSERT INTO usuario (nombre, rol, contraseña) VALUES
+('Junior','administrador','1234'),
+('Valentina','cocina','co123'),
+('Manuel','mozo','mo123');
+
 
 
