@@ -99,9 +99,10 @@ El sistema cuenta con 5 tablas principales:
 | Menú | Administra los platos disponibles del restaurante, permitiendo agregar, editar o eliminar platos, así como indicar su disponibilidad. |
 
 ### DIAGRAMA ENTIDAD RELACIÓN (DER)
-<img src='RECURSOS/entidad-relacion.png'>
+<img src='Recursos/entidad-relacion.png'>
+
 ### DIAGRAMA RELACIONAL (MR)
-<img src='RECURSOS/modelo relacional.png'>
+<img src='Recursos/modelo relacional.png'>
 
 ## CARDINALIDADES
 ### USUARIO -- ASISTENCIA (1:N)
