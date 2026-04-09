@@ -97,9 +97,14 @@ El sistema cuenta con 5 tablas principales:
 | Pedidos | Contiene la información de los pedidos realizados por los mozos, como la mesa, la hora y el estado del pedido. |
 | Cocina | Muestra los pedidos enviados por los mozos para su preparación. Permite actualizar el estado de los platos (pendiente, en preparación, servido). |
 | Menú | Administra los platos disponibles del restaurante, permitiendo agregar, editar o eliminar platos, así como indicar su disponibilidad. |
+<details>
 
-### DIAGRAMA ENTIDAD RELACIÓN (DER)
+<summary>### DIAGRAMA ENTIDAD RELACIÓN (DER)</summary>
+
 <img src='Recursos/entidad-relacion.png'>
+
+</details>
+
 
 ### DIAGRAMA RELACIONAL (MR)
 <img src='Recursos/modelo relacional.png'>
@@ -122,7 +127,7 @@ Un plato puede estar en muchos pedidos, pero cada detalle tiene un solo plato
 
 ## BASE DE DATOS 
 ```
-`#ffffff`CREATE DATABASE IF NOT EXISTS restaurante_db;
+CREATE DATABASE IF NOT EXISTS restaurante_db;
 USE restaurante_db;
 
 CREATE TABLE usuario (
