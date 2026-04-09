@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="CSS/style.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -108,7 +108,7 @@
     <section class="section active" id="sec-inicio">
       <div class="welcome-header">
         <div>
-          <p class="welcome-sub">Hola, <strong id="userName">Juan</strong></p>
+          <p class="welcome-sub">Hola, <strong id="userName">#</strong></p>
           <p class="welcome-date" id="welcomeDate"></p>
         </div>
         <div class="welcome-img">
@@ -121,21 +121,21 @@
           <div class="stat-icon pending"><i class="fa-regular fa-clock"></i></div>
           <div class="stat-info">
             <span class="stat-label">PEDIDOS PENDIENTES</span>
-            <span class="stat-num" id="statPendiente">3</span>
+            <span class="stat-num" id="statPendiente">#</span>
           </div>
         </div>
         <div class="stat-card">
           <div class="stat-icon prep"><i class="fa-solid fa-fire-burner"></i></div>
           <div class="stat-info">
             <span class="stat-label">EN PREPARACIÓN</span>
-            <span class="stat-num" id="statPrep">5</span>
+            <span class="stat-num" id="statPrep">#</span>
           </div>
         </div>
         <div class="stat-card">
           <div class="stat-icon served"><i class="fa-solid fa-circle-check"></i></div>
           <div class="stat-info">
             <span class="stat-label">SERVIDO</span>
-            <span class="stat-num" id="statServido">12</span>
+            <span class="stat-num" id="statServido">#</span>
           </div>
         </div>
       </div>
@@ -191,26 +191,25 @@
 
     <!-- ===== SECCIÓN: ASISTENCIA ===== -->
 
-<section class="page" id="page-asistencia">
+    <!-- ASISTENCIA -->
+      <section class="asistencia" id="page-asistencia">
+        <h2>Asistencia</h2>
         <div class="asist-grid">
-          <div class="clock-card">
+          <div class="asist-horario-info">
             <div class="clock-display" id="clock-display">00:00:00</div>
             <div class="clock-date" id="clock-date-disp"></div>
-            <div class="clock-actions">
-              <button class="btn btn-success" onclick="registrarEntrada()">✅ Registrar Entrada</button>
-              <button class="btn btn-warning" onclick="registrarSalida()">🚪 Registrar Salida</button>
-            </div>
           </div>
-          <div>
-            <div class="section-header">
-              <div class="section-title">Personal de <span>Hoy</span></div>
+            <div class="asistencia-btns">
+              <button class="btn-asist entrada" id="btnEntrada">
+                 <i class="fa-solid fa-right-to-bracket"></i> Registrar entrada
+              </button>
+              <button class="btn-asist salida" id="btnSalida">
+                 <i class="fa-solid fa-right-from-bracket"></i> Registrar salida
+              </button>
             </div>
-            <div class="attendance-list" id="attendance-list"></div>
-          </div>
         </div>
         <div class="section-header">
           <div class="section-title">Historial de <span>Asistencia</span></div>
-          <button class="btn btn-secondary btn-sm" onclick="renderAsistencia()">🔄 Actualizar</button>
         </div>
         <div class="card">
           <table>
@@ -218,19 +217,19 @@
             <tbody id="asist-table"></tbody>
           </table>
         </div>
-</section>
+      </section>
 
 
     <!-- ===== SECCIÓN: MENÚ ===== -->
-    <section class="section" id="sec-menu">
-      <div class="section-header">
-        <h2>Menú</h2>
-        <button class="btn-primary" id="btnNuevoPlato">
+<section class="section" id="sec-menu">
+    <div class="section-header">
+    <h2>Menú</h2>
+    <button class="btn-primary" id="btnNuevoPlato">
           <i class="fa-solid fa-plus"></i> Agregar plato
-        </button>
-      </div>
-      <div class="menu-list" id="menuList"></div>
-    </section>
+    </button>
+    </div>
+    <div class="menu-list" id="menuList"></div>
+</section>
 
   </main>
 </div>
@@ -302,6 +301,6 @@
   </div>
 </div>
 
-<script src="JS/main.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
