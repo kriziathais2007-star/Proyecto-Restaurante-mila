@@ -121,7 +121,7 @@ Un pedido puede tener varios platos, pero cada detalle pertenece a un pedido.
 Un plato puede estar en muchos pedidos, pero cada detalle tiene un solo plato
 
 ## BASE DE DATOS 
-
+```
 CREATE DATABASE IF NOT EXISTS restaurante_db;
 USE restaurante_db;
 
@@ -179,6 +179,6 @@ INSERT INTO usuario (nombre, rol, contraseña) VALUES
 ('Junior','administrador','1234'),
 ('Valentina','cocina','co123'),
 ('Manuel','mozo','mo123');
-
+```
 
 
