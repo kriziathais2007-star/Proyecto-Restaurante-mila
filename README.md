@@ -122,7 +122,7 @@ Un plato puede estar en muchos pedidos, pero cada detalle tiene un solo plato
 
 ## BASE DE DATOS 
 ```
-CREATE DATABASE IF NOT EXISTS restaurante_db;
+`#ffffff`CREATE DATABASE IF NOT EXISTS restaurante_db;
 USE restaurante_db;
 
 CREATE TABLE usuario (
