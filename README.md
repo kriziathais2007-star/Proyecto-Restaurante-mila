@@ -99,15 +99,18 @@ El sistema cuenta con 5 tablas principales:
 | Menú | Administra los platos disponibles del restaurante, permitiendo agregar, editar o eliminar platos, así como indicar su disponibilidad. |
 <details>
 
-<summary>### DIAGRAMA ENTIDAD RELACIÓN (DER)</summary>
+<summary> DIAGRAMA ENTIDAD RELACIÓN (DER)</summary>
 
 <img src='Recursos/entidad-relacion.png'>
 
 </details>
 
+<details>
+<summary> DIAGRAMA RELACIONAL (MR)</summary>
 
-### DIAGRAMA RELACIONAL (MR)
 <img src='Recursos/modelo relacional.png'>
+
+</details>
 
 ## CARDINALIDADES
 ### USUARIO -- ASISTENCIA (1:N)
@@ -126,7 +129,7 @@ Un pedido puede tener varios platos, pero cada detalle pertenece a un pedido.
 Un plato puede estar en muchos pedidos, pero cada detalle tiene un solo plato
 
 ## BASE DE DATOS 
-```
+```MySQL
 CREATE DATABASE IF NOT EXISTS restaurante_db;
 USE restaurante_db;
 
