@@ -2,16 +2,15 @@ package com.senati.RestauranteMili.controller;
 
 import com.senati.RestauranteMili.entity.Usuario;
 import com.senati.RestauranteMili.service.ClienteService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("api/usuarios")
 @CrossOrigin(origins = "*")
+
 public class ClienteController {
     private final ClienteService clienteService;
 
@@ -20,4 +19,12 @@ public class ClienteController {
     }
     @GetMapping
     public List<Usuario> listar() {return clienteService.listarTodos();}
+}
+@GetMapping
+public List<Usuario> listar() {return clienteService.listarTodos();}
+
+@DeleteMapping("/{id}")
+public ResponseEntity<void> eliminar(@PathVariable Long id){
+    clienteService.eliminarUsuario(id);
+    return ResponseEntity.noContent().build();
 }

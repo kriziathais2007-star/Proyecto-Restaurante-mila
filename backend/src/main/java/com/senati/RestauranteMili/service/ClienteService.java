@@ -12,4 +12,7 @@ public class ClienteService {
     public List<Usuario> listarTodos(){
         return clienteRepository.findAll();
     }
+    public void eliminarUsuario(Long id){
+        clienteRepository.deleteById(id);
+    };
 }
