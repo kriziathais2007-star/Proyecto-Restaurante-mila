@@ -1,0 +1,43 @@
+/* ─── TABLET / DESKTOP (≥ 768px) ─────────────────── */
+@media (min-width: 768px) {
+
+    /* Ocultar topbar en desktop */
+    .topbar {
+        display: none;
+    }
+
+    /* Sidebar siempre visible */
+    .sidebar {
+        left: 0;
+        top: 0;
+    }
+
+    /* El overlay no aplica en desktop */
+    .overlay {
+        display: none !important;
+    }
+
+    /* Main empuja a la derecha del sidebar */
+    main {
+        margin-top: 0;
+        margin-left: var(--sidebar-w);
+        padding: 36px 32px;
+    }
+
+    .breadcrumb-page {
+        color: #000;
+        font-weight: 600;
+    }
+
+}
+
+/* ─── MOBILE PEQUEÑO (≤ 360px) ───────────────────── */
+@media (max-width: 360px) {
+    .sidebar {
+        width: 100%;
+    }
+
+    main {
+        padding: 20px 14px;
+    }
+}

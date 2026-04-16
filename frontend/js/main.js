@@ -1,67 +1,59 @@
-// ===== DATOS =====
-const USUARIOS = [
-  { user: 'admin',    pass: '1234', nombre: 'Juan' },
-  { user: 'milagros', pass: '0000', nombre: 'Milagros' },
-];
-// ===== LOGIN =====
-const loginScreen = document.getElementById('loginScreen');
-const dashboard   = document.getElementById('dashboard');
 
-document.getElementById('btnLogin').addEventListener('click', doLogin);
-document.getElementById('inputPass').addEventListener('keydown', e => { if (e.key==='Enter') doLogin(); });
-document.getElementById('inputUser').addEventListener('keydown', e => { if (e.key==='Enter') document.getElementById('inputPass').focus(); });
+// EVENTOS EN JAVASCRIPT (CLICK, CARGAR, KEY,)
 
-function doLogin() {
-  const u = document.getElementById('inputUser').value.trim();
-  const p = document.getElementById('inputPass').value.trim();
-  const found = USUARIOS.find(x => x.user===u && x.pass===p);
-  const errEl = document.getElementById('loginError');
-  if (!found) {
-    errEl.textContent = 'Usuario o contraseña incorrectos.';
-    document.getElementById('inputPass').value = '';
-    return;
-  }
-  errEl.textContent = '';
-  document.getElementById('userName').textContent = found.nombre;
-  loginScreen.classList.add('hidden');
-  dashboard.classList.remove('hidden');
-  setWelcomeDate();
-  renderAll();
-}
+document.addEventListener("DOMContentLoaded", () => {
 
+  fetch("http://localhost:8080/api/clientes")
+    .then((response) => response.json())
+    .then((data) => {
+      // DOM -> <tbody id="table-cliente">
+      const elemento = document.getElementById("table-cliente");
+      for (let i = 0; i < data.length; i++) {
+        //data[i], muestra en forma de array
+        let cliente = data[i];
+        // alt + 96
+        let fila = `
+                            <tr>
+                            <td>${cliente.id}</td>
+                            <td>${cliente.nombre}</td>
+                            <td>${cliente.apellido}</td>
+                            <td>${cliente.dni}</td>
+                            <td>${cliente.telefono}</td>
+                            <td>${cliente.direccion}</td>
+                            <td> 
+                                <button class="btn btn-outline-primary me-2">
+                                    <i class="fas fa-edit"></i> Editar
+                                </button>
+                                <button id="btnEliminar" data-idcliente = ${cliente.id} class="btn btn-outline-danger">
+                                    <i class="fas fa-trash"></i> Eliminar
+                                </button>
+                            </td>
+                            </tr>                
+                           `;
+        elemento.innerHTML += fila;
+      }
+    });
 
-// ===== NAVEGACIÓN =====
-const navLinks  = document.querySelectorAll('.nav-link[data-section]');
-const sections  = document.querySelectorAll('.section');
-const breadcrumb= document.getElementById('breadcrumb');
-const secNames  = { inicio:'Inicio', pedidos:'Pedidos', cocina:'Cocina', asistencia:'Asistencia', menu:'Menú' };
-
-navLinks.forEach(link => {
-  link.addEventListener('click', e => {
-    e.preventDefault();
-    const sec = link.dataset.section;
-    navLinks.forEach(l => l.classList.remove('activo'));
-    link.classList.add('activo');
-    sections.forEach(s => s.classList.remove('active'));
-    document.getElementById('sec-'+sec).classList.add('active');
-    breadcrumb.innerHTML = `<span>Inicio</span>` +
-      (sec!=='inicio' ? ` <i class="fa-solid fa-chevron-right" style="font-size:.65rem;color:#aaa"></i><span>${secNames[sec]}</span>` : '');
-    sidebar.classList.remove('sidebar-open');
-    overlay.classList.remove('show');
-    renderSection(sec);
-  });
 });
 
-function renderSection(sec) {
-  ({ inicio:renderInicio, pedidos:renderPedidos, cocina:renderCocina, asistencia:renderAsistencia, menu:renderMenu }[sec] || (()=>{}))();
-}
-
-// ===== FECHA =====
-function setWelcomeDate() {
-  document.getElementById('welcomeDate').textContent =
-    new Date().toLocaleDateString('es-PE', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
-}
-
-function renderAll() {
-  renderInicio(); renderPedidos(); renderCocina(); renderAsistencia(); renderMenu();
-}
+// EVENTO DE CLICK EN JAVASCRIPT
+//Creamos una variable que almacene el DOM de ese elemento del boton
+document.addEventListener("click", function (e) {
+  const btnDelete = e.target.closest("#btnEliminar");
+    if (btnDelete) { //TRUE o 1
+        alert("Eliminando...");
+        const id = btnDelete.dataset.idcliente;
+        //console.log(id) para en consola que ID es nada mas
+        //fetch("http://localhost:8080/api/clientes/"+id, {
+        fetch(`http://localhost:8080/api/clientes/${id}`, {
+          method: 'DELETE'
+        })
+        .then(response => {
+            if (response.ok) {
+              alert('Cliente eliminado correctamente');
+              location.reload(); // Recargar la página para reflejar los cambios
+            } else {
+              alert('Error al eliminar el cliente');
+        }})
+    }
+});
