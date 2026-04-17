@@ -7,12 +7,12 @@
 }
 
 :root {
-    --bg: #f5f5f5;
-    --text: #1a1a1a;
+    --bg: #ffffff;
+    --text: #000000;
     --sidebar-w: 220px;
-    --sidebar-bg: #ffffff;
+    --sidebar-bg: #ffdeff;
     --sidebar-line: rgba(0, 0, 0, 0.1);
-    --muted: #999;
+    --muted: #494747;
     --accent: #4f46e5;
     --topbar-h: 56px;
     --danger: #e74c3c;
@@ -20,8 +20,16 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: var(--bg);
     color: var(--text);
+}
+body::before {
+  content: "";
+  background: url(../image/fondo.jpg);
+  background-size: cover;
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  opacity: 0.4; /* Ajusta este valor (0.1 a 0.9) */
+  z-index: -1;   /* Lo envía detrás del contenido */
 }
 
 /* ─── TOPBAR (móvil) ─────────────────────────────── */
