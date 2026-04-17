@@ -12,6 +12,9 @@ public class ClienteService {
     public List<Usuario> listarTodos(){
         return clienteRepository.findAll();
     }
+    public Usuario crearUsuario(Usuario usuario){
+        return clienteRepository.save(usuario);
+    }
     public void eliminarUsuario(Long id){
         clienteRepository.deleteById(id);
     };
