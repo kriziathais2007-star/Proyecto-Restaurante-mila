@@ -7,7 +7,7 @@
 }
 
 :root {
-    --bg: #ffffff;
+    --bg: #eaa7ec;
     --text: #000000;
     --sidebar-w: 220px;
     --sidebar-bg: #ffdeff;
@@ -20,6 +20,7 @@
 
 body {
     font-family: 'Poppins', sans-serif;
+    background-color: #1a1a1a;
     color: var(--text);
 }
 body::before {
@@ -129,7 +130,7 @@ body::before {
     gap: 12px;
     padding: 11px 14px;
     text-decoration: none;
-    color: var(--muted);
+    color: #494949;
     font-size: 0.875rem;
     font-weight: 500;
     border-radius: 8px;
@@ -148,7 +149,7 @@ body::before {
 }
 
 .sidebar ul li a.activo {
-    background-color: #eeeeee;
+    background-color: #d169cc;
     color: var(--text);
     font-weight: 600;
 }
@@ -163,7 +164,7 @@ body::before {
 }
 
 .nav-logout a:hover {
-    background-color: #fde8e8 !important;
+    background-color: #dfa4a4 !important;
     color: var(--danger) !important;
 }
 
