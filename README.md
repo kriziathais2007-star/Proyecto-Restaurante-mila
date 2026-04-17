@@ -138,6 +138,7 @@ Id_Usuario INT AUTO_INCREMENT PRIMARY KEY,
 nombre VARCHAR(100) NOT NULL,
 rol VARCHAR(20) NOT NULL,
 contraseña VARCHAR(100) NOT NULL,
+telefono INT NOT NULL,
 CONSTRAINT chk_rol CHECK(rol IN('administrador','mozo','cocina'))
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish_ci;
 
@@ -183,10 +184,10 @@ CONSTRAINT chk_cantidad CHECK (cantidad > 0),
 CONSTRAINT chk_estado_plato CHECK(estado_plato IN('falta servir','servido'))
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_spanish_ci;
 
-INSERT INTO usuario (nombre, rol, contraseña) VALUES
-('Junior','administrador','1234'),
-('Valentina','cocina','co123'),
-('Manuel','mozo','mo123');
+INSERT INTO usuario (nombre, rol, contraseña, telefono) VALUES
+('Junior','administrador','1234','956 522 524'),
+('Valentina','cocina','co123','964 521 475'),
+('Manuel','mozo','mo123','912 452 035');
 ```
 
 
