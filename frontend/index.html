@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="Es">
 
@@ -13,37 +12,11 @@
 </head>
 
 <body>
-    
-
-<!-- ===== LOGIN SCREEN 
-<div class="login-screen" id="loginScreen">
-  <div class="login-left">
-    <div class="login-logo-wrap">
-      <div class="login-logo-circle">
-        <img src="image/logo.png">
-      </div>
-      <p class="login-brand">Restaurante<br><strong>Milagros</strong></p>
-    </div>
-  </div>
-  <div class="login-right">
-    <div class="login-box">
-      <div class="login-avatar"><i class="fa-solid fa-user"></i></div>
-      <h2 class="login-title">INICIAR SESIÓN</h2>
-      <div class="login-field">
-        <label>USUARIO:</label>
-        <input type="text" id="inputUser" placeholder="Tu usuario" autocomplete="off">
-      </div>
-      <div class="login-field">
-        <label>CONTRASEÑA:</label>
-        <input type="password" id="inputPass" placeholder="••••••••">
-      </div>
-    </div>
-  </div> ===== -->
 
     <!-- TOPBAR (solo visible en móvil) -->
     <div class="topbar">
         <div class="title-business">
-            <span>Restaurante "Milagros"</span>
+            <span>RESTAURANTE MILAGROS</span>
         </div>
         <div class="btn-menu">
             <button class="hamburger" aria-label="Abrir menú">
@@ -57,33 +30,37 @@
 
     <!-- SIDEBAR -->
     <aside class="sidebar">
-        <div class="sidebar-logo">Dashboard</div>
+        <div class="sidebar-logo">RESTAURANTE MILI</div>
         <ul>
             <li>
-                <a href="#" class="activo" data-page="home">
+                <a href="index.html" class="activo" data-page="home">
                     <i class="fa-solid fa-house"></i>
                     <span>Inicio</span>
                 </a>
             </li>
             <li>
-                 <a href="#" class="nav-link" data-section="pedidos">
-                    <i class="fa-solid fa-clipboard-list"></i><span>Pedidos</span>
-                 </a>
+                <a href="#" data-page="pedidos">
+                    <i class="fa-solid fa-clipboard-list"></i>
+                    <span>Pedidos</span>
+                </a>
             </li>
             <li>
-                 <a href="#" class="nav-link" data-section="cocina">
-                    <i class="fa-solid fa-kitchen-set"></i><span>Cocina</span>
-                 </a>
+                <a href="#" data-page="cocina">
+                    <i class="fa-solid fa-kitchen-set"></i>
+                    <span>Cocina</span>
+                </a>
             </li>
             <li>
-                 <a href="#" class="nav-link" data-section="asistencia">
-                    <i class="fa-solid fa-user-check"></i><span>Asistencia</span>
-                 </a>
+                <a href="asistencia.html" data-page="asistencia">
+                    <i class="fa-solid fa-user-check"></i>
+                    <span>Asistencia</span>
+                </a>
             </li>
             <li>
-                 <a href="#" class="nav-link" data-section="menu">
-                   <i class="fa-solid fa-pen-to-square"></i><span>Menú</span>
-                 </a>
+                <a href="#" data-page="menu">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    <span>Menú</span>
+                </a>
             </li>
             <li class="nav-logout">
                 <a href="#" id="btn-logout">
@@ -93,40 +70,21 @@
             </li>
         </ul>
     </aside>
-<!-- MAIN CONTENT -->
+
+    <!-- CONTENIDO PRINCIPAL -->
     <main>
         <nav class="breadcrumb">
-            <span>Asistencia</span>
+            <span>Inicio</span>
             <i class="fa-solid fa-chevron-right"></i>
-            <span id="breadcrumb-page">Menú</span>
+            <span id="breadcrumb-page">Inicio</span>
         </nav>
         <div class="main-content">
-            <div class="mb-2 d-flex justify-content-between align-items-center">
-                <h4 class="mb-0">EMPLEADOS</h4>
-                <button class="btn btn-primary">REGISTRAR</button>
-            </div>
-            <div class="table-responsive">
-                <table class="table">
-                    <thead class="table-dark">
-                        <tr>
-                            <th>ID</th>
-                            <th>Nombre</th>
-                            <th>Rol</th>
-                            <th>Contraseña</th>
-                        </tr>
-                    </thead>
-                    <tbody id="table-cliente">
 
-                    </tbody>
-                </table>
-            </div>
         </div>
     </main>
 
-  <script src="js/main.js"></script>
-  <script src="js/login.js"></script>
-  <script src="js/sidebar.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
+    <script src="js/sidebar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
