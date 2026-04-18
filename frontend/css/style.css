@@ -7,12 +7,12 @@
 }
 
 :root {
-    --bg: #f5f5f5;
-    --text: #1a1a1a;
+    --bg: #eaa7ec;
+    --text: #000000;
     --sidebar-w: 220px;
-    --sidebar-bg: #ffffff;
+    --sidebar-bg: #ffdeff;
     --sidebar-line: rgba(0, 0, 0, 0.1);
-    --muted: #999;
+    --muted: #494747;
     --accent: #4f46e5;
     --topbar-h: 56px;
     --danger: #e74c3c;
@@ -20,8 +20,17 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: var(--bg);
+    background-color: #1a1a1a;
     color: var(--text);
+}
+body::before {
+  content: "";
+  background: url(../image/fondo.jpg);
+  background-size: cover;
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  opacity: 0.4; /* Ajusta este valor (0.1 a 0.9) */
+  z-index: -1;   /* Lo envía detrás del contenido */
 }
 
 /* ─── TOPBAR (móvil) ─────────────────────────────── */
@@ -121,7 +130,7 @@ body {
     gap: 12px;
     padding: 11px 14px;
     text-decoration: none;
-    color: var(--muted);
+    color: #494949;
     font-size: 0.875rem;
     font-weight: 500;
     border-radius: 8px;
@@ -140,7 +149,7 @@ body {
 }
 
 .sidebar ul li a.activo {
-    background-color: #eeeeee;
+    background-color: #d169cc;
     color: var(--text);
     font-weight: 600;
 }
@@ -155,7 +164,7 @@ body {
 }
 
 .nav-logout a:hover {
-    background-color: #fde8e8 !important;
+    background-color: #dfa4a4 !important;
     color: var(--danger) !important;
 }
 
