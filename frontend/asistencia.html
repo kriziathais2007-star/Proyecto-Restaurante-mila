@@ -84,7 +84,7 @@
                 <button 
                         class="btn btn-primary"
                         data-bs-toggle="modal" 
-                        data-bs-target="#modalRegistroCliente"
+                        data-bs-target="#modalRegistroUsuario"
                         >REGISTRAR
                 </button>
             </div>
@@ -99,7 +99,7 @@
                             <th>Contraseña</th>
                         </tr>
                     </thead>
-                    <tbody id="table-cliente">
+                    <tbody id="table-usuario">
 
                     </tbody>
                 </table>
@@ -108,7 +108,7 @@
     </main>
 
 <!-- Modal REGISTRO DE CLIENTE-->
-<div class="modal fade" id="modalRegistroCliente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalRegistroUsuario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -119,26 +119,33 @@
             <form>
                 <div class="mb-3">
                     <label for="" class="form-label">Nombre</label>
-                    <input type="text" class="form-control" id="c_nombre" name="nombre" required>
+                    <input type="text" class="form-control" id="u_nombre" name="nombre" required>
                 </div>
                 <div class="mb-3">
-                    <label for="" class="form-label">Rol</label>
-                    <input type="text" class="form-control" id="c_rol" name="rol" required>
+                  <label class="form-label">Rol</label>
+                    <select class="form-select" id="u_rol" name="rol" required>
+                     <option value="" disabled selected>Seleccione un rol</option>
+                     <option value="admin">Administrador</option>
+                     <option value="mozo">Mozo</option>
+                     <option value="cocinero">Cocinero</option>
+                  </select>
                 </div>
                 <div class="mb-3">
-                    <label for="" class="form-label">Teléfono</label>
-                    <input type="tel" class="form-control" id="c_telefono" name="telefono" required>
+                <label class="form-label">Teléfono</label>
+                  <div class="input-group">
+                    <span class="input-group-text">+51</span>
+                    <input type="tel" class="form-control" id="u_telefono" name="telefono" required>
+                  </div>
                 </div>
                 <div class="mb-3">
                     <label for="" class="form-label">Contraseña</label>
-                    <input type="password" class="form-control" id="c_contrasena" name="contrasena" required>
+                    <input type="password" class="form-control" id="u_contra" name="contra" required>
                 </div>
-    
             </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary" id="btn-crearcliente">Guardar</button>
+        <button type="button" class="btn btn-primary" id="btn-crearUsuario">Guardar</button>
       </div>
     </div>
   </div>
