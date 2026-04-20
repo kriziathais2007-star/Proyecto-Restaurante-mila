@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* ===== RESET & VARIABLES ===== */
+*, *::before, *::after {
+  margin: 0; padding: 0; box-sizing: border-box;
+}
+
+:root {
+            --primary: #b5451b;
+            --primary-d: #8c3212;
+            --border: #e8ddd4;
+            --muted: #8a7060;
+            --bg-card: #ffffff;
+        }
+
+        /* ── GRID DE CARDS ── */
+        .platos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 1.4rem;
+            padding: 1.5rem;
+        }
+
+        /* ── CARD ── */
+        .plato-card {
+            background: var(--bg-card);
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: transform .2s, box-shadow .2s;
+            animation: fadeUp .35s ease both;
+        }
+        .plato-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(181,69,27,.13);
+        }
+        @keyframes fadeUp {
+            from { opacity:0; transform:translateY(14px); }
+            to   { opacity:1; transform:translateY(0); }
+        }
+        .card-img-wrap {
+            height: 140px;
+            background: linear-gradient(135deg, #f5e6d8, #ead3bc);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--primary);
+        }
+        .card-body { padding: 1rem 1.1rem; }
+        .card-nombre {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: .25rem;
+        }
+        .card-descripcion {
+            font-size: .82rem;
+            color: var(--muted);
+            line-height: 1.5;
+            margin-bottom: .8rem;
+            min-height: 2.4rem;
+        }
+        .card-footer-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .card-precio {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+        .card-precio span {
+            font-size: .72rem;
+            font-weight: 500;
+            color: var(--muted);
+            margin-right: .15rem;
+        }
+        .btn-eliminar-card {
+            background: #fff0ee;
+            border: 1px solid #f5c4b8;
+            color: #c0392b;
+            padding: .3rem .75rem;
+            border-radius: 6px;
+            font-size: .78rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: .3rem;
+            transition: background .2s;
+        }
+        .btn-eliminar-card:hover { background: #fde0da; }
+
+        /* ── EMPTY STATE ── */
+        .empty-state {
+            grid-column: 1/-1;
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--muted);
+        }
+        .empty-state i { font-size: 3rem; margin-bottom: 1rem; opacity: .35; display: block; }
+
+        /* ── MODAL ── */
+        .modal-header-custom {
+            background: var(--primary);
+            color: #fff;
+            border-radius: 12px 12px 0 0;
+            padding: 1rem 1.4rem;
+        }
+        .modal-header-custom .btn-close { filter: invert(1); }
+        .modal-content { border: none; border-radius: 12px; }
+
+        /* ── TOAST ── */
+        .toast-wrap {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+        }
+        .toast-msg {
+            background: #2e7d32;
+            color: #fff;
+            padding: .65rem 1.1rem;
+            border-radius: 8px;
+            font-size: .83rem;
+            font-weight: 600;
+            box-shadow: 0 4px 16px rgba(0,0,0,.18);
+            animation: slideIn .25s ease;
+        }
+        .toast-msg.error { background: #c0392b; }
+        @keyframes slideIn {
+            from { opacity:0; transform:translateX(30px); }
+            to   { opacity:1; transform:translateX(0); }
+        }
+
+        /* ── PAGE HEADER ── */
+        .menu-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem 1.5rem .5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .menu-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        .menu-title i { color: var(--primary); margin-right: .4rem; }
+        .badge-total {
+            background: var(--primary);
+            color: #fff;
+            font-size: .72rem;
+            padding: .18rem .55rem;
+            border-radius: 20px;
+            margin-left: .4rem;
+            vertical-align: middle;
+        }

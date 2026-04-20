@@ -1,8 +1,5 @@
-
-
 document.addEventListener("DOMContentLoaded", () => {
 
-    // ── Mostrar fecha de hoy ──────────────────────────────────────────────────
     const fechaEl = document.getElementById("fecha-hoy");
     if (fechaEl) {
         fechaEl.textContent = new Date().toLocaleDateString("es-PE", {
@@ -10,18 +7,16 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // ── Cargar tablas ─────────────────────────────────────────────────────────
-    cargarUsuarios();
-    cargarAsistencia();
+    // Solo carga si estamos en la página correcta
+    if (document.getElementById("table-usuario"))    cargarUsuarios();
+    if (document.getElementById("table-asistencia")) cargarAsistenciaCompleta();
 
-    // ── Botón GUARDAR usuario ─────────────────────────────────────────────────
-    document.getElementById("btn-crearUsuario").addEventListener("click", guardarUsuario);
+    const btnCrear  = document.getElementById("btn-crearUsuario");
+    const btnEditar = document.getElementById("btn-Editarusuario");
 
-    // ── Botón ACTUALIZAR usuario ──────────────────────────────────────────────
-    document.getElementById("btn-Editarusuario").addEventListener("click", actualizarUsuario);
-
+    if (btnCrear)  btnCrear.addEventListener("click", guardarUsuario);
+    if (btnEditar) btnEditar.addEventListener("click", actualizarUsuario);
 });
-
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // USUARIOS
@@ -288,3 +283,52 @@ document.addEventListener("click", function (e) {
 document.addEventListener("DOMContentLoaded", () => {
     cargarAsistenciaCompleta();
 });
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// LOGIN
+// ═══════════════════════════════════════════════════════════════════════════════
+
+const btnLogin = document.getElementById("btnLogin");
+if (btnLogin) {
+    btnLogin.addEventListener("click", async () => {
+        const nombre     = document.getElementById("inputUser").value.trim();
+        const contrasena = document.getElementById("inputPass").value;
+        const error      = document.getElementById("loginError");
+
+        if (!nombre || !contrasena) {
+            error.textContent = "Completa todos los campos.";
+            return;
+        }
+
+        try {
+            const res = await fetch("http://localhost:8080/api/auth/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ nombre, contrasena })
+            });
+
+            const data = await res.json();
+
+            if (res.ok) {
+                localStorage.setItem("token",  data.token);
+                localStorage.setItem("rol",    data.rol);
+                localStorage.setItem("nombre", data.nombre);
+
+                // Redirige según rol
+                if (data.rol === "administrador") window.location.href = "inicio.html";
+                else if (data.rol === "cocina")   window.location.href = "cocina.html";
+                else if (data.rol === "mozo")     window.location.href = "inicio.html";
+            } else {
+                error.textContent = "Usuario o contraseña incorrectos.";
+            }
+
+        } catch (e) {
+            error.textContent = "No se pudo conectar con el servidor.";
+        }
+    });
+
+    // También funciona con Enter
+    document.addEventListener("keydown", e => {
+        if (e.key === "Enter") btnLogin.click();
+    });
+}
