@@ -1,6 +1,6 @@
 # SISTEMA WEB DE GESTIÓN PARA UN RESTAURANTE
 'https://trello.com/invite/b/69a1f85c0ed4e45d0fc17d32/ATTIe2fd04a19811f5b4cfb389993cdd4bc18F42DF2C/restaurante-milagros-proyecto-senati'
-<img src="">
+<img src="captura de pantalla 2026-04-20183225.png">
 ## DESCRIPCIÓN DEL NEGOCIO
 #### NOMBRE: 
 RESTAURTANTE "  "Milagros"
