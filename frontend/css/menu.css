@@ -1,161 +1,203 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
-
-/* ===== RESET & VARIABLES ===== */
-*, *::before, *::after {
-  margin: 0; padding: 0; box-sizing: border-box;
+:root {
+    --menu-primary:   #9e3d8aef;
+    --menu-primary-d: #6e311a;
+    --menu-border:    #e8ddd4;
+    --menu-muted:     #8a7060;
+    --menu-card-bg:   #ffffff;
+    --menu-bg-icon:   linear-gradient(135deg, #f5e6d8, #ead3bc);
 }
 
-:root {
-            --primary: #b5451b;
-            --primary-d: #8c3212;
-            --border: #e8ddd4;
-            --muted: #8a7060;
-            --bg-card: #ffffff;
-        }
+/* ── PAGE HEADER ── */
+.menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 1.5rem .75rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.menu-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #000000;
+    margin: 0;
+}
+.menu-title i { color: var(--menu-primary); margin-right: .4rem; }
+.badge-total {
+    background: var(--menu-primary);
+    color: #ffffff;
+    font-size: 1rem;
+    padding: .18rem .55rem;
+    border-radius: 20px;
+    margin-left: .4rem;
+    vertical-align: middle;
+    font-weight: 600;
+}
 
-        /* ── GRID DE CARDS ── */
-        .platos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-            gap: 1.4rem;
-            padding: 1.5rem;
-        }
+/* ── BTN AGREGAR ── */
+.btn-agregar-plato {
+    background: rgb(219, 69, 154);
+    color: #ffffff;
+    border: none;
+    padding: .55rem 1.2rem;
+    border-radius: 8px;
+    font-size: .88rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: .45rem;
+    transition: background .2s, transform .1s;
+}
+.btn-agregar-plato:hover {
+    background: yellowgreen;
+    transform: translateY(-1px);
+}
 
-        /* ── CARD ── */
-        .plato-card {
-            background: var(--bg-card);
-            border-radius: 14px;
-            border: 1px solid var(--border);
-            overflow: hidden;
-            transition: transform .2s, box-shadow .2s;
-            animation: fadeUp .35s ease both;
-        }
-        .plato-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 28px rgba(181,69,27,.13);
-        }
-        @keyframes fadeUp {
-            from { opacity:0; transform:translateY(14px); }
-            to   { opacity:1; transform:translateY(0); }
-        }
-        .card-img-wrap {
-            height: 140px;
-            background: linear-gradient(135deg, #f5e6d8, #ead3bc);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: var(--primary);
-        }
-        .card-body { padding: 1rem 1.1rem; }
-        .card-nombre {
-            font-size: 1rem;
-            font-weight: 700;
-            margin-bottom: .25rem;
-        }
-        .card-descripcion {
-            font-size: .82rem;
-            color: var(--muted);
-            line-height: 1.5;
-            margin-bottom: .8rem;
-            min-height: 2.4rem;
-        }
-        .card-footer-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .card-precio {
-            font-size: 1.15rem;
-            font-weight: 800;
-            color: var(--primary);
-        }
-        .card-precio span {
-            font-size: .72rem;
-            font-weight: 500;
-            color: var(--muted);
-            margin-right: .15rem;
-        }
-        .btn-eliminar-card {
-            background: #fff0ee;
-            border: 1px solid #f5c4b8;
-            color: #c0392b;
-            padding: .3rem .75rem;
-            border-radius: 6px;
-            font-size: .78rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: .3rem;
-            transition: background .2s;
-        }
-        .btn-eliminar-card:hover { background: #fde0da; }
+/* ── GRID ── */
+.platos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
+    gap: 1rem;
+    padding: .5rem 1.5rem 2rem;
+}
 
-        /* ── EMPTY STATE ── */
-        .empty-state {
-            grid-column: 1/-1;
-            text-align: center;
-            padding: 4rem 2rem;
-            color: var(--muted);
-        }
-        .empty-state i { font-size: 3rem; margin-bottom: 1rem; opacity: .35; display: block; }
+/* ── CARD ── */
+.plato-card {
+    background: var(--menu-card-bg);
+    border-radius: 14px;
+    border: 1px solid var(--menu-border);
+    overflow: hidden;
+    transition: transform .2s, box-shadow .2s;
+    animation: fadeUp .35s ease both;
+}
+.plato-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(4, 4, 4, 0.13);
+}
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+.card-img-wrap {
+    height: 138px;
+    background: var(--menu-bg-icon);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    color: var(--menu-primary);
+}
+.card-body-plato { padding: 1rem 1.1rem; }
+.card-nombre-plato {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: .25rem;
+}
+.card-desc-plato {
+    font-size: .93rem;
+    color: var(--menu-muted);
+    line-height: 1.5;
+    margin-bottom: .50rem;
+    min-height: 2rem;
+}
+.card-footer-plato {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.card-precio {
+    font-size: 1.70rem;
+    font-weight: 800;
+    color: #c0392b;
+}
+.card-precio span {
+    font-size: 1.20rem;
+    font-weight: 600;
+    color: rgb(0, 0, 0);
+    margin-right: 0.2rem;
+}
+.btn-eliminar-plato {
+    background: #f51d00;
+    border: 1px solid #5de43400;
+    color: #ffffff;
+    padding: .3rem .72rem;
+    border-radius: 6px;
+    font-size: .78rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: .3rem;
+    transition: background .2s;
+}
+.btn-eliminar-plato:hover { background: #6ed240; }
 
-        /* ── MODAL ── */
-        .modal-header-custom {
-            background: var(--primary);
-            color: #fff;
-            border-radius: 12px 12px 0 0;
-            padding: 1rem 1.4rem;
-        }
-        .modal-header-custom .btn-close { filter: invert(1); }
-        .modal-content { border: none; border-radius: 12px; }
+/* ── EMPTY STATE ── */
+.empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--menu-muted);
+}
+.empty-state i { font-size: 3rem; margin-bottom: 1rem; opacity: .35; display: block; }
+.empty-state p { font-size: .95rem; line-height: 1.6; }
 
-        /* ── TOAST ── */
-        .toast-wrap {
-            position: fixed;
-            bottom: 1.5rem;
-            right: 1.5rem;
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            gap: .5rem;
-        }
-        .toast-msg {
-            background: #2e7d32;
-            color: #fff;
-            padding: .65rem 1.1rem;
-            border-radius: 8px;
-            font-size: .83rem;
-            font-weight: 600;
-            box-shadow: 0 4px 16px rgba(0,0,0,.18);
-            animation: slideIn .25s ease;
-        }
-        .toast-msg.error { background: #c0392b; }
-        @keyframes slideIn {
-            from { opacity:0; transform:translateX(30px); }
-            to   { opacity:1; transform:translateX(0); }
-        }
+/* ── MODAL ── */
+.modal-plato { border: none; border-radius: 13px; overflow: hidden; }
+.modal-plato-header {
+    background: var(--menu-primary);
+    color: #fff;
+    padding: 1rem 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.modal-plato-header h5 { margin: 0; font-weight: 700; font-size: .98rem; }
+.field-label {
+    font-size: .78rem;
+    font-weight: 600;
+    color: var(--menu-muted);
+    text-transform: uppercase;
+    letter-spacing: .4px;
+    margin-bottom: .3rem;
+    display: block;
+}
+.btn-guardar-plato {
+    background: var(--menu-primary);
+    color: #fff;
+    border: none;
+    padding: .55rem 1.4rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: .88rem;
+    cursor: pointer;
+    transition: background .2s;
+}
+.btn-guardar-plato:hover { background: var(--menu-primary-d); }
 
-        /* ── PAGE HEADER ── */
-        .menu-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 1.5rem 1.5rem .5rem;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-        .menu-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-        .menu-title i { color: var(--primary); margin-right: .4rem; }
-        .badge-total {
-            background: var(--primary);
-            color: #fff;
-            font-size: .72rem;
-            padding: .18rem .55rem;
-            border-radius: 20px;
-            margin-left: .4rem;
-            vertical-align: middle;
-        }
+/* ── TOASTS ── */
+.toast-wrap {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+.toast-msg {
+    background: #2e7d32;
+    color: #fff;
+    padding: .65rem 1.1rem;
+    border-radius: 8px;
+    font-size: .83rem;
+    font-weight: 600;
+    box-shadow: 0 4px 16px rgba(0,0,0,.18);
+    animation: slideIn .25s ease;
+}
+.toast-msg.error { background: #c0392b; }
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(30px); }
+    to   { opacity: 1; transform: translateX(0); }
+}

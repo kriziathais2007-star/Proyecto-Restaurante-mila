@@ -8,13 +8,14 @@
     <script src="js/auth.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
 
-    <!-- TOPBAR (solo visible en móvil) -->
+    <!-- TOPBAR -->
     <div class="topbar">
         <div class="title-business">
             <span>RESTAURANTE MILAGROS</span>
@@ -33,95 +34,77 @@
     <aside class="sidebar">
         <div class="sidebar-logo">RESTAURANTE MILI</div>
         <ul>
-            <li>
-                <a href="inicio.html" data-page="home">
-                    <i class="fa-solid fa-house"></i><span>Inicio</span>
-                </a>
-            </li>
-            <li>
-                <a href="pedidos.html" data-page="pedidos">
-                    <i class="fa-solid fa-clipboard-list"></i><span>Pedidos</span>
-                </a>
-            </li>
-            <li>
-                <a href="cocina.html" data-page="cocina">
-                    <i class="fa-solid fa-kitchen-set"></i><span>Cocina</span>
-                </a>
-            </li>
-            <li>
-                <a href="asistencia.html" data-page="asistencia">
-                    <i class="fa-solid fa-user-check"></i><span>Asistencia</span>
-                </a>
-            </li>
-            <li>
-                <a href="menu.html" class="activo" data-page="menu">
-                    <i class="fa-solid fa-pen-to-square"></i><span>Menú</span>
-                </a>
-            </li>
+            <li><a href="inicio.html" data-page="home"><i class="fa-solid fa-house"></i><span>Inicio</span></a></li>
+            <li><a href="pedidos.html" data-page="pedidos"><i class="fa-solid fa-clipboard-list"></i><span>Pedidos</span></a></li>
+            <li><a href="cocina.html" data-page="cocina"><i class="fa-solid fa-kitchen-set"></i><span>Cocina</span></a></li>
+            <li><a href="asistencia.html" data-page="asistencia"><i class="fa-solid fa-user-check"></i><span>Asistencia</span></a></li>
+            <li><a href="menu.html" class="activo" data-page="menu"><i class="fa-solid fa-pen-to-square"></i><span>Menú</span></a></li>
             <li class="nav-logout">
                 <a href="#" id="btn-logout">
-                   <i class="fa-solid fa-right-from-bracket"></i>
+                    <i class="fa-solid fa-right-from-bracket"></i>
                     <span>Cerrar sesión</span>
                 </a>
             </li>
         </ul>
     </aside>
 
-    <!-- ── CONTENIDO PRINCIPAL ── -->
+    <!-- CONTENIDO PRINCIPAL -->
     <main class="main-content">
-
-        <!-- Header -->
+        <nav class="breadcrumb">
+            <span>Menú</span>
+            <i class="fa-solid fa-chevron-right"></i>
+            <span id="breadcrumb-page">Inicio</span>
+        </nav>
         <div class="menu-header">
             <h2 class="menu-title">
                 <i class="fa-solid fa-book-open"></i>
                 Carta del Menú
                 <span class="badge-total" id="badge-total">0</span>
             </h2>
-            <button class="btn btn-sm fw-semibold text-white"
-                    style="background:var(--primary);border:none;border-radius:8px;padding:.5rem 1.2rem"
+            <button class="btn-agregar-plato"
                     data-bs-toggle="modal" data-bs-target="#modalAgregarPlato">
-                <i class="fa-solid fa-plus me-1"></i> Agregar plato
+                <i class="fa-solid fa-plus"></i> Agregar plato
             </button>
         </div>
 
-        <!-- Grid de platos -->
         <div class="platos-grid" id="platos-grid"></div>
 
     </main>
 
-    <!-- ── MODAL AGREGAR PLATO ── -->
+    <!-- MODAL AGREGAR PLATO -->
     <div class="modal fade" id="modalAgregarPlato" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header-custom d-flex align-items-center justify-content-between">
-                    <h5 class="mb-0 fw-bold"><i class="fa-solid fa-plus me-2"></i>Nuevo plato</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            <div class="modal-content modal-plato">
+                <div class="modal-plato-header">
+                    <h5><i class="fa-solid fa-plus me-2"></i>Nuevo plato</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body p-4">
                     <div class="mb-3">
-                        <label class="form-label fw-semibold text-muted small text-uppercase">Nombre del plato</label>
+                        <label class="field-label">Nombre del plato</label>
                         <input type="text" id="p_nombre" class="form-control" placeholder="Ej: Lomo Saltado">
                     </div>
                     <div class="mb-3">
-                        <label class="form-label fw-semibold text-muted small text-uppercase">Precio (S/.)</label>
+                        <label class="field-label">Precio (S/.)</label>
                         <input type="number" id="p_precio" class="form-control" placeholder="Ej: 25.00" min="0" step="0.50">
                     </div>
                     <div class="mb-3">
-                        <label class="form-label fw-semibold text-muted small text-uppercase">Descripción</label>
+                        <label class="field-label">Descripción</label>
                         <textarea id="p_descripcion" class="form-control" rows="3" placeholder="Describe el plato..."></textarea>
                     </div>
                 </div>
-                <div class="modal-footer border-0 pt-0">
+                <div class="modal-footer border-0">
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" id="btn-guardarPlato"
-                            class="btn text-white fw-semibold"
-                            style="background:var(--primary);border:none;border-radius:8px">
+                    <button type="button" id="btn-guardarPlato" class="btn-guardar-plato">
                         <i class="fa-solid fa-floppy-disk me-1"></i> Guardar
                     </button>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- TOASTS -->
+    <div class="toast-wrap" id="toast-wrap"></div>
 
     <script src="js/sidebar.js"></script>
     <script src="js/logout.js"></script>
