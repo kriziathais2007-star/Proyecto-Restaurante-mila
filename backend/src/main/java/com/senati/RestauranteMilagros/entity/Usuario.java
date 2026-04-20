@@ -19,16 +19,20 @@ public class Usuario {
     @Column(nullable = false, length = 20)
     private Rol rol;
 
+    private String telefono;
+
     @Column(nullable = false, length = 100)
-    private String contraseña;
+    private String contrasena;
+
 
     // Constructores
     public Usuario() {}
 
-    public Usuario(String nombre, Rol rol, String contraseña) {
+    public Usuario(String nombre, Rol rol, String telefono, String contrasena) {
         this.nombre = nombre;
         this.rol = rol;
-        this.contraseña = contraseña;
+        this.telefono = telefono;
+        this.contrasena = contrasena;
     }
 
     // Getters y Setters
@@ -53,10 +57,13 @@ public class Usuario {
         this.rol = rol;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getTelefono(){ return telefono;}
+    public void setTelefono(String telefono){ this.telefono = telefono; }
+
+    public String getContrasena() {
+        return contrasena;
     }
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 }

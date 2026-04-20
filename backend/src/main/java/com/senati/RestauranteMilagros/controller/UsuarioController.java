@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/usuarios")
-@CrossOrigin
+@CrossOrigin(origins = "*")
 public class UsuarioController {
     private final UsuarioService usuarioService;
     public UsuarioController(UsuarioService usuarioService){
@@ -25,6 +25,12 @@ public class UsuarioController {
     public ResponseEntity<Usuario> crear(@RequestBody Usuario usuario){
         return ResponseEntity.ok(usuarioService.crearUsuario(usuario));
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Usuario> actualizar(@PathVariable Long id, @RequestBody Usuario usuario) {
+        return ResponseEntity.ok(usuarioService.actualizarUsuario(id, usuario));
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminar(@PathVariable Long id){
         usuarioService.eliminarUsuario(id);
