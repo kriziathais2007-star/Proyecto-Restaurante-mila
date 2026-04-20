@@ -1,6 +1,7 @@
 package com.senati.RestauranteMilagros.repository;
 
 import com.senati.RestauranteMilagros.entity.Asistencia;
+import com.senati.RestauranteMilagros.entity.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.time.LocalDate;

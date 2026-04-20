@@ -1,3 +1,5 @@
+
+
 document.addEventListener("DOMContentLoaded", () => {
 
     // ── Mostrar fecha de hoy ──────────────────────────────────────────────────
@@ -19,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("btn-Editarusuario").addEventListener("click", actualizarUsuario);
 
 });
+
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // USUARIOS
@@ -44,7 +47,7 @@ function cargarUsuarios() {
                             data-nomusu="${usuario.nombre}"
                             data-rolusu="${usuario.rol}"
                             data-telusu="${usuario.telefono}"
-                            data-contrausu="${usuario.contrasena}">
+                            >
                             <i class="fas fa-pencil-alt"></i> Editar
                         </button>
                         <button class="btn btn-outline-danger btnEliminar" data-idusuario="${usuario.id}">
