@@ -74,7 +74,145 @@
             <span id="breadcrumb-page">Inicio</span>
         </nav>
         <div class="main-content">
-
+<header>
+  <div class="header-brand">
+    <span class="brand-icon">🍽</span>
+    <div>
+      <h1>Restaurante <em>Milagros</em></h1>
+      <p class="subtitle">Sistema de Pedidos</p>
+    </div>
+  </div>
+  <div class="header-actions">
+    <button class="btn-primary" onclick="abrirModalMenu()">+ Agregar al Menú</button>
+  </div>
+</header>
+ 
+<!-- ===== MAIN LAYOUT ===== -->
+<main>
+ 
+  <!-- COLUMNA IZQUIERDA: Mesas -->
+  <section class="panel-mesas">
+    <h2 class="panel-title">Mesas</h2>
+    <div id="lista-mesas" class="mesas-grid">
+      <!-- generadas por JS -->
+    </div>
+  </section>
+ 
+  <!-- COLUMNA CENTRAL: Pedido activo de la mesa -->
+  <section class="panel-pedido">
+    <div id="pedido-header">
+      <h2 class="panel-title" id="pedido-titulo">Selecciona una mesa</h2>
+      <button class="btn-success" id="btn-nuevo-pedido" style="display:none" onclick="nuevoPedido()">+ Nuevo Pedido</button>
+      <button class="btn-danger"  id="btn-cerrar-pedido" style="display:none" onclick="cerrarPedido()">Cerrar Pedido</button>
+    </div>
+ 
+    <div id="pedido-vacio" class="empty-state">
+      <span>🪑</span>
+      <p>Selecciona una mesa para ver o crear su pedido</p>
+    </div>
+ 
+    <!-- Lista de ítems del pedido -->
+    <div id="pedido-detalles" style="display:none">
+      <table class="tabla-pedido">
+        <thead>
+          <tr>
+            <th>Plato</th>
+            <th>Precio</th>
+            <th>Cant.</th>
+            <th>Subtotal</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="tbody-detalles"></tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3" class="total-label">TOTAL</td>
+            <td class="total-valor" id="total-pedido">S/ 0.00</td>
+            <td></td>
+          </tr>
+        </tfoot>
+      </table>
+      <div class="agregar-item-row">
+        <button class="btn-primary" onclick="abrirModalAgregarItem()">+ Agregar plato</button>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- COLUMNA DERECHA: Menú completo -->
+  <section class="panel-menu">
+    <h2 class="panel-title">Carta del Menú</h2>
+    <div class="filtro-categoria">
+      <button class="btn-cat active" onclick="filtrarCategoria('', this)">Todos</button>
+      <button class="btn-cat" onclick="filtrarCategoria('Entradas', this)">Entradas</button>
+      <button class="btn-cat" onclick="filtrarCategoria('Platos de Fondo', this)">Fondo</button>
+      <button class="btn-cat" onclick="filtrarCategoria('Bebidas', this)">Bebidas</button>
+      <button class="btn-cat" onclick="filtrarCategoria('Postres', this)">Postres</button>
+    </div>
+    <ul id="lista-menu" class="menu-list"></ul>
+  </section>
+ 
+</main>
+ 
+<!-- ===== MODAL: Agregar/Editar ítem del menú ===== -->
+<div id="modal-menu" class="modal-overlay" style="display:none">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3 id="modal-menu-titulo">Nuevo Plato</h3>
+      <button class="modal-close" onclick="cerrarModalMenu()">✕</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="menu-id"/>
+      <label>Nombre del plato</label>
+      <input class="input-field" id="menu-nombre" placeholder="Ej. Lomo Saltado"/>
+ 
+      <label>Categoría</label>
+      <select class="input-field" id="menu-categoria">
+        <option>Entradas</option>
+        <option>Platos de Fondo</option>
+        <option>Bebidas</option>
+        <option>Postres</option>
+      </select>
+ 
+      <label>Precio (S/)</label>
+      <input class="input-field" id="menu-precio" type="number" step="0.50" min="0" placeholder="0.00"/>
+ 
+      <label>Descripción</label>
+      <input class="input-field" id="menu-descripcion" placeholder="Descripción opcional"/>
+ 
+      <label class="check-label">
+        <input type="checkbox" id="menu-disponible" checked/> Disponible
+      </label>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-secondary" onclick="cerrarModalMenu()">Cancelar</button>
+      <button class="btn-primary" onclick="guardarMenu()">Guardar</button>
+    </div>
+  </div>
+</div>
+ 
+<!-- ===== MODAL: Agregar ítem al pedido ===== -->
+<div id="modal-agregar" class="modal-overlay" style="display:none">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3>Agregar al Pedido</h3>
+      <button class="modal-close" onclick="cerrarModalAgregar()">✕</button>
+    </div>
+    <div class="modal-body">
+      <label>Plato</label>
+      <select class="input-field" id="agregar-item-id"></select>
+ 
+      <label>Cantidad</label>
+      <input class="input-field" id="agregar-cantidad" type="number" min="1" value="1"/>
+ 
+      <label>Notas (opcional)</label>
+      <input class="input-field" id="agregar-notas" placeholder="Sin cebolla, extra salsa…"/>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-secondary" onclick="cerrarModalAgregar()">Cancelar</button>
+      <button class="btn-primary" onclick="confirmarAgregarItem()">Agregar</button>
+    </div>
+  </div>
+</div>
         </div>
     </main>
 
