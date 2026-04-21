@@ -191,5 +191,6 @@ INSERT INTO usuario (nombre, rol, contraseña, telefono) VALUES
 ('Valentina','cocina','co123','964 521 475'),
 ('Manuel','mozo','mo123','912 452 035');
 ```
-
+## FIGMA
+https://www.figma.com/design/niNEN65Fok96fvXG2vjbRs/Sin-t%C3%ADtulo?node-id=0-1&t=48klTXX3gIGawNSu-1
 
