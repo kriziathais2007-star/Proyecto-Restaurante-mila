@@ -113,7 +113,7 @@ El sistema cuenta con 5 tablas principales:
 <img src='Recursos/modelo relacional.png'>
 
 </details>
-wdwd
+
 ## CARDINALIDADES
 ### USUARIO -- ASISTENCIA (1:N)
 Un usuario puede tener muchas asistencias, y una asistencia pertenece a un solo usuario.
